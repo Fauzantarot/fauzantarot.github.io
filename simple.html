@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Fauzan Tarot - Layanan Profesional</title>
+  <link rel="icon" href="https://i.imgur.com/EKbMawI.jpg">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Lora&display=swap" rel="stylesheet">
+  <style>
+    
+    body {
+      background-color: #1a002a;
+      color: #e0e0e0;  
+      font-family: 'Lora', serif;
+      margin: 0;
+      padding: 0; /* Padding body diatur di konten utama */
+      text-align: center;
+      position: relative;
+      z-index: 1;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start; 
+    }
+
+    /* Background Layer */
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: url('https://i.imgur.com/XMpaq1Z.jpeg');
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+      /* Filter ungu gelap yang halus, tidak terlalu mencolok */
+      filter: hue-rotate(270deg) brightness(35%) saturate(180%);
+      z-index: -1;
+      opacity: 0.7; /* Sedikit transparansi untuk kesan modern */
+    }
+
+    /* Main Content Container */
+    .container {
+      max-width: 800px; /* Lebar maksimum konten utama */
+      margin: 60px auto 40px auto; /* Margin atas lebih besar, bawah & samping otomatis */
+      padding: 30px;
+      background-color: rgba(30, 0, 45, 0.9); /* Background semi-transparan untuk konten */
+      border-radius: 10px; /* Sudut membulat */
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.6); /* Shadow yang lebih dalam */
+      z-index: 2; /* Pastikan di atas background */
+      position: relative;
+    }
+
+    /* Profile Image */
+    img.profile {
+      width: 110px; /* Ukuran profil sedikit dikecilkan */
+      height: 110px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-top: -80px; /* Diangkat agar sedikit di luar container */
+      margin-bottom: 20px;
+      box-shadow: 0 0 25px rgba(255, 204, 102, 0.7);
+      border: 1px solid #ffda7f; /* Border lebih tebal */
+    }
+
+    /* Heading */
+    h2 {
+      font-family: 'Playfair Display', serif;
+      color: #ffcc66; /* Warna emas yang jelas */
+      margin-top: 15px;
+      font-size: 2.5em; /* Judul lebih besar dan tegas */
+      letter-spacing: 2px;
+      text-shadow: 0 3px 10px rgba(255, 204, 102, 0.4);
+      line-height: 1.2; /* Jarak antar baris judul */
+    }
+
+    /* Description */
+    .desc {
+      max-width: 650px; /* Lebar deskripsi disesuaikan */
+      margin: 25px auto;
+      font-size: 17px;
+      line-height: 1.7;
+      color: #c9c9c9; /* Warna teks deskripsi sedikit lebih lembut */
+    }
+
+    .desc p {
+        margin-bottom: 10px; /* Spasi antar paragraf */
+    }
+
+    /* Buttons */
+    .button-group {
+        display: grid;
+        grid-template-columns: 1fr; /* Satu kolom untuk mobile */
+        gap: 15px; /* Jarak antar tombol */
+        margin-top: 30px;
+        margin-bottom: 30px;
+    }
+
+    @media (min-width: 600px) {
+        .button-group {
+            grid-template-columns: repeat(2, 1fr); /* Dua kolom untuk desktop */
+            max-width: 700px; /* Lebar maksimum grup tombol */
+            margin-left: auto;
+            margin-right: auto;
+        }
+    }
+
+    .button {
+      display: flex; /* Menggunakan flexbox untuk memusatkan ikon/teks */
+      align-items: center;
+      justify-content: center;
+      background-color: #5a008c; /* Warna tombol ungu gelap */
+      color: #fff8e1; /* Teks tombol putih kekuningan */
+      padding: 15px 20px;
+      border: 1px solid #ffcc66; /* Border emas tipis */
+      border-radius: 8px; /* Sudut tombol lebih tegas */
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 1.05em;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+      text-transform: uppercase; /* Teks tombol menjadi huruf kapital */
+      letter-spacing: 0.5px;
+    }
+    .button:hover {
+      background-color: #ffcc66; /* Warna emas saat hover */
+      color: #1a002a; /* Teks gelap saat hover */
+      transform: translateY(-3px);
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.5);
+      border-color: #e6b800; /* Warna border berubah saat hover */
+    }
+
+    /* Social Icons */
+    .social-icons {
+      margin-top: 40px;
+      padding-bottom: 20px; /* Tambah padding bawah */
+    }
+    .social-icons a {
+      margin: 0 18px; /* Jarak antar ikon lebih lebar */
+      display: inline-block;
+      transition: transform 0.3s ease, filter 0.3s ease;
+    }
+    .social-icons a img {
+      width: 40px; /* Ukuran ikon sosial lebih besar */
+      height: 40px;
+      filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.6)); /* Efek glow yang lebih kuat */
+    }
+    .social-icons a:hover {
+      transform: scale(1.25);
+      filter: drop-shadow(0 0 12px rgba(255, 255, 255, 0.8)); /* Glow lebih kuat saat hover */
+    }
+
+    /* Footer */
+    footer {
+      margin-top: auto; /* Dorong footer ke bawah */
+      padding: 30px 0;
+      font-size: 14px;
+      color: #8c8c8c; /* Warna footer lebih lembut */
+      border-top: 1px solid rgba(255, 255, 255, 0.1); /* Garis pemisah tipis */
+      background-color: rgba(0, 0, 0, 0.2); /* Sedikit background transparan untuk footer */
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <img class="profile" src="https://i.imgur.com/EKbMawI.jpg" alt="Foto profil Fauzan Tarot">
+
+    <h2>Fauzan Tarot</h2>
+    <h3>Teman Perubahanmu</h3> <div class="desc">
+      <a>Sebagai pembaca tarot berpengalaman, saya hadir untuk membantu dan menemanimu menemukan pencerahan, makna mendalam, serta jawaban dalam berbagai masalah kehidupan. Sesi saya memadukan intuisi, empati, kepekaan spiritual serta beberapa pengetahuan lain yang pernah saya pelajari agar menyentuh akar masalah dan menemanimu dalam proses hidupmu </a>.
+    </div>
+
+   
+
+    <div class="button-group">
+      <a class="button" href="https://wa.me/6281523738172" target="_blank">🔮 Booking sesi Private khusus untukmu</a>  
+      <a class="button" href="https://drive.google.com/file/d/1YbvfXkmNcVOZsCHbdfixhsYew-W-h0NV/view?usp=drivesdk" target="_blank">🗝️ Lihat Paket & Benefit</a>
+      <a class="button" href="https://fauzantarot.github.io/TarotgratisFauzan/" target="_blank">✨ Mini Reading Gratis</a>
+      <a class="button" href="https://www.instagram.com/stories/highlights/17911644742120276/" target="_blank">✨ Testimoni Klien</a>
+      <a class="button" href="https://drive.google.com/drive/folders/1ZTqqTixkERhGKZuvZU0XT37AMTtY0Dka" target="_blank">📖 Perjalanan Belajar Saya</a>
+    </div>
+    
+    <div class="desc">
+      <p><strong>⏰ Waktu Layanan:</strong><br>
+      12:00 WITA – 23:30 WITA</p>
+      <p><strong>❌ Libur hari Selasa</strong></p>
+    </div>
+
+    <div class="social-icons">
+      <a href="https://www.tiktok.com/@fauzantarot" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/3046/3046121.png" alt="TikTok"></a>
+      <a href="https://www.instagram.com/fauzantarot" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/174/174855.png" alt="Instagram"></a>
+      <a href="https://www.facebook.com/fauzantarot" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" alt="Facebook"></a>
+      <a href="https://www.youtube.com/@fauzantarot" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png" alt="YouTube"></a>
+    </div>
+  </div> <footer> 2025 Fauzan Tarot</footer>
+
+</body>
+</html>
