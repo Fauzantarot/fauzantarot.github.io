@@ -1,257 +1,514 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Fauzan | Teman Perubahan</title>
-  <link rel="icon" href="https://drive.google.com/thumbnail?id=1TLZJ2tYFNbmdDoJIQXaMG4TVYBQLi7mQ&sz=w1000">
-  
-  <!-- Font Playfair (Klasik/Elegan) & Inter (Bersih/Modern) -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
-  
-  <style>
-    /* --- MINIMALIST LUXURY TOKENS --- */
-    :root {
-      --bg-color: #030303;      /* Hitam solid pekat */
-      --text-main: #ffffff;
-      --text-muted: #8a8a8a;
-      --gold-accent: #d4af37;   /* Emas elegan, tidak mencolok */
-      --border-color: #1f1f1f;  /* Garis batas sangat tipis */
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Fauzan | Teman Perubahan</title>
+<meta name="description" content="Pemetaan masalah cinta & hubungan lewat intuisi tarot dan logika. Booking sesi, mini reading gratis, dan analisa numerology.">
+<link rel="icon" href="https://drive.google.com/thumbnail?id=1TLZJ2tYFNbmdDoJIQXaMG4TVYBQLi7mQ&sz=w1000">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;1,9..144,400&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      -webkit-tap-highlight-color: transparent;
-    }
+<style>
+  :root{
+    --bg:#030304;
+    --bg-soft:#0a0a0e;
+    --card:#0d0d11;
+    --ink:#f2efe9;
+    --muted:#8b8790;
+    --gold:#c9a86a;
+    --gold-dim:#8f7a4f;
+    --violet:#7c6fa0;
+    --line:#1c1c22;
+    --open:#7fae7a;
+    --closed:#a67a6a;
+  }
 
-    body {
-      background-color: var(--bg-color);
-      color: var(--text-main);
-      font-family: 'Inter', sans-serif;
-      line-height: 1.6;
-      display: flex;
-      justify-content: center;
-      min-height: 100vh;
-      -webkit-font-smoothing: antialiased;
-    }
+  *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent;}
 
-    /* --- CONTAINER --- */
-    .container {
-      width: 100%;
-      max-width: 480px;
-      padding: 60px 24px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-      animation: fadeIn 0.8s ease-out forwards;
-    }
+  html{scroll-behavior:smooth;}
 
-    /* --- PROFILE --- */
-    .profile-img {
-      width: 110px;
-      height: 110px;
-      border-radius: 50%;
-      object-fit: cover;
-      filter: grayscale(100%); /* Hapus baris ini jika ingin foto berwarna */
-      margin-bottom: 24px;
-      border: 1px solid var(--border-color);
-      padding: 4px;
-    }
+  body{
+    background:var(--bg);
+    color:var(--ink);
+    font-family:'Manrope',sans-serif;
+    font-weight:300;
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
 
-    /* --- TYPOGRAPHY --- */
-    h1 {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.8rem;
-      font-weight: 600;
-      letter-spacing: 1px;
-      margin-bottom: 4px;
-    }
+  /* ---------- COSMIC BACKGROUND SIGNATURE ---------- */
+  #sky{
+    position:fixed;
+    inset:0;
+    z-index:0;
+    opacity:.55;
+    pointer-events:none;
+  }
 
-    .subtitle {
-      font-size: 0.85rem;
-      text-transform: uppercase;
-      letter-spacing: 3px;
-      color: var(--gold-accent);
-      margin-bottom: 24px;
-    }
+  .bg-gradient{
+    position:fixed;
+    inset:0;
+    z-index:0;
+    background:
+      radial-gradient(ellipse 60% 40% at 50% -10%, rgba(124,111,160,.16), transparent 60%),
+      radial-gradient(ellipse 50% 30% at 85% 90%, rgba(201,168,106,.08), transparent 60%);
+    pointer-events:none;
+  }
 
-    .bio {
-      font-size: 0.95rem;
-      font-weight: 300;
-      color: var(--text-muted);
-      margin-bottom: 40px;
-      line-height: 1.8;
-    }
+  main{
+    position:relative;
+    z-index:1;
+    width:100%;
+    max-width:520px;
+    margin:0 auto;
+    padding:64px 24px 40px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+  }
 
-    .bio strong {
-      color: var(--text-main);
-      font-weight: 400;
-    }
+  /* ---------- REVEAL ---------- */
+  .reveal{
+    opacity:0;
+    transform:translateY(14px);
+    transition:opacity .7s ease, transform .7s ease;
+  }
+  .reveal.in{opacity:1;transform:translateY(0);}
 
-    /* --- LINK BUTTONS --- */
-    .links-wrapper {
-      width: 100%;
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-      margin-bottom: 40px;
-    }
+  /* ---------- HERO ---------- */
+  .profile-wrap{
+    position:relative;
+    width:112px;height:112px;
+    margin-bottom:22px;
+  }
+  .profile-ring{
+    position:absolute;inset:-6px;
+    border-radius:50%;
+    border:1px solid var(--gold-dim);
+    opacity:.6;
+  }
+  .profile-img{
+    width:100%;height:100%;
+    border-radius:50%;
+    object-fit:cover;
+    filter:grayscale(100%);
+  }
 
-    .btn {
-      width: 100%;
-      padding: 18px 20px;
-      background: transparent;
-      border: 1px solid var(--border-color);
-      color: var(--text-main);
-      text-decoration: none;
-      font-size: 0.9rem;
-      font-weight: 400;
-      letter-spacing: 0.5px;
-      border-radius: 4px; /* Sudut sedikit tegas untuk kesan profesional */
-      transition: all 0.3s ease;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
+  .eyebrow{
+    font-size:.7rem;
+    letter-spacing:3px;
+    text-transform:uppercase;
+    color:var(--gold);
+    margin-bottom:10px;
+    font-weight:500;
+  }
 
-    .btn-primary {
-      background: var(--text-main);
-      color: var(--bg-color);
-      font-weight: 500;
-      border: none;
-    }
+  h1{
+    font-family:'Fraunces',serif;
+    font-weight:500;
+    font-size:2.1rem;
+    letter-spacing:.3px;
+    margin-bottom:6px;
+  }
 
-    /* Efek Hover Elegan */
-    .btn:hover {
-      border-color: var(--text-muted);
-    }
+  h1 em{font-style:italic;font-weight:400;color:var(--gold);}
 
-    .btn-primary:hover {
-      background: var(--gold-accent);
-      color: var(--bg-color);
-    }
+  .bio{
+    font-size:.95rem;
+    font-weight:300;
+    color:var(--muted);
+    max-width:360px;
+    margin:14px 0 26px;
+  }
+  .bio strong{color:var(--ink);font-weight:500;}
 
-    /* --- INFO & IMAGE --- */
-    .info-section {
-      width: 100%;
-      border-top: 1px solid var(--border-color);
-      padding-top: 30px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 20px;
-    }
+  /* status pill */
+  .status{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    padding:8px 16px;
+    border:1px solid var(--line);
+    border-radius:100px;
+    font-size:.75rem;
+    color:var(--muted);
+    margin-bottom:30px;
+    background:rgba(255,255,255,.02);
+  }
+  .status .dot{
+    width:7px;height:7px;border-radius:50%;
+    background:var(--closed);
+    box-shadow:0 0 8px var(--closed);
+  }
+  .status.open .dot{background:var(--open);box-shadow:0 0 8px var(--open);}
 
-    .schedule {
-      font-family: 'Playfair Display', serif;
-      font-size: 0.95rem;
-      color: var(--gold-accent);
-    }
+  /* ---------- CTA BUTTONS ---------- */
+  .cta-group{width:100%;display:flex;flex-direction:column;gap:12px;margin-bottom:56px;}
 
-    .schedule span {
-      display: block;
-      font-family: 'Inter', sans-serif;
-      font-size: 0.8rem;
-      color: var(--text-muted);
-      margin-top: 4px;
-    }
+  .btn{
+    width:100%;
+    padding:17px 20px;
+    background:transparent;
+    border:1px solid var(--line);
+    color:var(--ink);
+    text-decoration:none;
+    font-size:.88rem;
+    font-weight:400;
+    letter-spacing:.3px;
+    border-radius:6px;
+    transition:all .25s ease;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:8px;
+  }
+  .btn-primary{
+    background:var(--ink);
+    color:var(--bg);
+    font-weight:600;
+    border:none;
+  }
+  .btn:hover{border-color:var(--muted);transform:translateY(-1px);}
+  .btn-primary:hover{background:var(--gold);color:var(--bg);}
 
-    .art-image {
-      width: 100%;
-      max-width: 220px;
-      opacity: 0.5;
-      filter: grayscale(100%);
-      transition: opacity 0.3s ease;
-    }
+  /* ---------- SECTIONS ---------- */
+  section{width:100%;margin-bottom:56px;}
 
-    .art-image:hover {
-      opacity: 0.8;
-    }
+  .section-head{margin-bottom:22px;text-align:left;}
+  .section-head .eyebrow{margin-bottom:6px;}
+  .section-head h2{
+    font-family:'Fraunces',serif;
+    font-weight:500;
+    font-size:1.3rem;
+  }
+  .section-head p{
+    font-size:.85rem;
+    color:var(--muted);
+    margin-top:6px;
+  }
 
-    /* --- SOCIAL ICONS --- */
-    .socials {
-      display: flex;
-      gap: 24px;
-      margin-top: 10px;
-    }
+  /* tier cards */
+  .tier{
+    text-align:left;
+    border:1px solid var(--line);
+    border-radius:10px;
+    padding:22px;
+    margin-bottom:14px;
+    background:linear-gradient(180deg, rgba(255,255,255,.015), transparent);
+    transition:border-color .25s ease;
+  }
+  .tier:hover{border-color:var(--gold-dim);}
+  .tier-top{display:flex;justify-content:space-between;align-items:baseline;gap:10px;margin-bottom:8px;}
+  .tier-name{font-family:'Fraunces',serif;font-size:1.05rem;font-weight:500;}
+  .tier-for{font-size:.7rem;letter-spacing:1px;text-transform:uppercase;color:var(--gold);white-space:nowrap;}
+  .tier-desc{font-size:.85rem;color:var(--muted);margin-bottom:14px;}
+  .tier a{
+    font-size:.8rem;
+    color:var(--ink);
+    text-decoration:none;
+    border-bottom:1px solid var(--gold-dim);
+    padding-bottom:2px;
+  }
+  .tier a:hover{border-color:var(--gold);color:var(--gold);}
 
-    .socials a {
-      display: block;
-      transition: opacity 0.3s ease;
-      opacity: 0.5;
-    }
+  /* entry links grid */
+  .entry-grid{display:flex;flex-direction:column;gap:12px;}
+  .entry{
+    display:flex;justify-content:space-between;align-items:center;
+    text-align:left;
+    border:1px solid var(--line);
+    border-radius:8px;
+    padding:16px 18px;
+    text-decoration:none;
+    color:var(--ink);
+    transition:all .25s ease;
+  }
+  .entry:hover{border-color:var(--muted);background:rgba(255,255,255,.02);}
+  .entry-title{font-size:.88rem;font-weight:500;}
+  .entry-sub{font-size:.75rem;color:var(--muted);margin-top:3px;}
+  .entry-arrow{color:var(--gold);font-size:1rem;}
 
-    .socials img {
-      width: 20px;
-      height: 20px;
-      filter: invert(100%);
-    }
+  /* proof */
+  .proof-grid{display:flex;gap:12px;}
+  .proof-card{
+    flex:1;
+    border:1px solid var(--line);
+    border-radius:8px;
+    padding:20px 14px;
+    text-align:center;
+    text-decoration:none;
+    color:var(--ink);
+    transition:all .25s ease;
+  }
+  .proof-card:hover{border-color:var(--gold-dim);}
+  .proof-card .num{font-family:'Fraunces',serif;font-size:1.4rem;color:var(--gold);display:block;margin-bottom:4px;}
+  .proof-card .lbl{font-size:.72rem;color:var(--muted);letter-spacing:.5px;}
 
-    .socials a:hover {
-      opacity: 1;
-    }
+  /* ---------- FOOTER ---------- */
+  .info-section{
+    width:100%;
+    border-top:1px solid var(--line);
+    padding-top:32px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:22px;
+  }
 
-    /* --- FOOTER --- */
-    footer {
-      margin-top: 30px;
-      font-size: 0.75rem;
-      color: #444;
-      letter-spacing: 1px;
-    }
+  .schedule{font-family:'Fraunces',serif;font-size:.95rem;color:var(--gold);text-align:center;}
+  .schedule span{display:block;font-family:'Manrope',sans-serif;font-size:.78rem;color:var(--muted);margin-top:4px;font-weight:300;}
 
-    /* --- ANIMATION --- */
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(10px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-  </style>
+  .socials{display:flex;gap:26px;}
+  .socials a{display:block;opacity:.55;transition:opacity .25s ease;}
+  .socials a:hover{opacity:1;}
+  .socials img{width:18px;height:18px;filter:invert(100%);}
+
+  footer{margin-top:26px;font-size:.7rem;color:#444;letter-spacing:1px;}
+
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    .reveal{opacity:1;transform:none;transition:none;}
+  }
+</style>
 </head>
 <body>
 
-  <main class="container">
-    
-    <!-- Link gambar baru dimasukkan di sini -->
-    <img class="profile-img" src="https://drive.google.com/thumbnail?id=1TLZJ2tYFNbmdDoJIQXaMG4TVYBQLi7mQ&sz=w1000" alt="Fauzan Profile">
-    
-    <h1>Fauzan</h1>
-    <div class="subtitle">Teman Perubahan</div>
-    
-    <p class="bio">
-      Memadukan <strong>intuisi spiritual</strong> dan <strong>analisa logis</strong> untuk menyentuh akar masalah serta memandu proses transformasimu.
-    </p>
+<canvas id="sky"></canvas>
+<div class="bg-gradient"></div>
 
-    <div class="links-wrapper">
-      <a href="https://fauzantarot.github.io/Pricelist/" target="_blank" class="btn btn-primary">Booking Sesi Sekarang</a>
-      <a href="https://fauzantarot.github.io/TarotgratisFauzan/" target="_blank" class="btn">Mini Reading Gratis</a>
-      <a href="https://fauzantarot.github.io/Numerology/" target="_blank" class="btn">Analisa Numerology</a>
-      <a href="https://drive.google.com/drive/folders/1ZNTNJdw2JEy74JxwqfDnRX6ds72Mw0m9" target="_blank" class="btn">Testimoni Klien</a>
-      <a href="https://drive.google.com/drive/folders/1ZTqqTixkERhGKZuvZU0XT37AMTtY0Dka" target="_blank" class="btn">Perjalanan Belajar</a>
+<main>
+
+  <div class="profile-wrap reveal">
+    <div class="profile-ring"></div>
+    <img class="profile-img" src="https://drive.google.com/thumbnail?id=1TLZJ2tYFNbmdDoJIQXaMG4TVYBQLi7mQ&sz=w1000" alt="Fauzan Profile">
+  </div>
+
+  <div class="eyebrow reveal">Tarot Mapping</div>
+  <h1 class="reveal">TEMAN PERUBAHAN</h1>
+
+  <p class="bio reveal">
+    Membantu memetakan akar masalah melalui bacaan Tarot intuitif dan analisa sadar yang aktif untuk mendapatkan solusi terbaik untuk setiap masalah yang tengah kamu hadapi sekarang
+  </p>
+
+  <div class="status reveal" id="statusPill">
+    <span class="dot"></span>
+    <span id="statusText">Mengecek jadwal…</span>
+  </div>
+
+  <div class="cta-group reveal">
+    <a href="https://wa.me/6281234567890" target="_blank" class="btn btn-primary">Chat via WhatsApp</a>
+    <a href="https://fauzantarot.github.io/Pricelist/" target="_blank" class="btn">Lihat Detail & Booking Sesi</a>
+  </div>
+
+  <section class="reveal">
+    <div class="section-head">
+      <div class="eyebrow">Cara Kerja Sama</div>
+      <h2>Empat jalur pendampingan</h2>
+      <p>Pilih sesuai seberapa dalam kamu ingin menelusuri masalahmu.</p>
     </div>
 
-    <section class="info-section">
-      <div class="schedule">
-        Waktu Layanan
-        <span>12:00 – 23:30 WITA (Libur Selasa)</span>
+    <div class="tier">
+      <div class="tier-top">
+        <span class="tier-name">Simple Mapping</span>
+        <span class="tier-for">Non interaktif</span>
       </div>
+      <p class="tier-desc">Pemetaan situasi tanpa sesi 2 arah</p>
+      <a href="https://raw.githubusercontent.com/Fauzantarot/fauzantarot.github.io/68adb8158a5af01530e1bbecaf05cdfb7c60cec3/Katalog_Layanan%20(1)_260630_164925_2.jpg" target="_blank">Lihat detail →</a>
+    </div>
 
-      <img class="art-image" src="https://i.imgur.com/izh8lU9.jpeg" alt="Ilustrasi">
-
-      <div class="socials">
-        <a href="https://www.tiktok.com/@fauzantarot" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/3046/3046121.png" alt="TikTok"></a>
-        <a href="https://www.instagram.com/fauzantarot" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/174/174855.png" alt="Instagram"></a>
-        <a href="https://www.facebook.com/fauzantarot" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" alt="Facebook"></a>
-        <a href="https://www.youtube.com/@fauzantarot" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png" alt="YouTube"></a>
+    <div class="tier">
+      <div class="tier-top">
+        <span class="tier-name">The Spark</span>
+        <span class="tier-for">Sesi Interaktif singkat</span>
       </div>
-    </section>
+      <p class="tier-desc">Sesi interaktif untuk mengurai masalah mendesak .</p>
+      <a href="https://raw.githubusercontent.com/Fauzantarot/fauzantarot.github.io/68adb8158a5af01530e1bbecaf05cdfb7c60cec3/Katalog_Layanan%20(1)_260630_164925_3.jpg" target="_blank">Lihat detail →</a>
+    </div>
 
-    <footer>
-      © 2026 Fauzan
-    </footer>
+    <div class="tier">
+      <div class="tier-top">
+        <span class="tier-name">Deep Allignment</span>
+        <span class="tier-for">Pemetaan mendalam</span>
+      </div>
+      <p class="tier-desc">Bedah 1 pola hidup dan akar masalah secara menyeluruh.</p>
+      <a href="https://raw.githubusercontent.com/Fauzantarot/fauzantarot.github.io/68adb8158a5af01530e1bbecaf05cdfb7c60cec3/Katalog_Layanan%20(1)_260630_164925_4.jpg" target="_blank">Lihat detail →</a>
+    </div>
+    
+     <div class="tier">
+      <div class="tier-top">
+        <span class="tier-name">Metamorphosis</span>
+        <span class="tier-for">Pendampingan Rutin</span>
+      </div>
+      <p class="tier-desc">Program transformasi selama 1 bulan penuh. Dirancang khusus untuk 
+kamu yang sudah muak dengan keadaan dan bertekad kuat untuk 
+menghancurkan pola lama.</p>
+      <a href="https://raw.githubusercontent.com/Fauzantarot/fauzantarot.github.io/68adb8158a5af01530e1bbecaf05cdfb7c60cec3/Katalog_Layanan%20(1)_260630_164925_5.jpg" target="_blank">Lihat detail →</a>
+    </div>
+  </section>
 
-  </main>
+  <section class="reveal">
+    <div class="section-head">
+      <div class="eyebrow">Belum Yakin?</div>
+      <h2>Mulai dari sini, gratis</h2>
+    </div>
+    <div class="entry-grid">
+      <a class="entry" href="https://fauzantarot.github.io/TarotgratisFauzan/" target="_blank">
+        <div>
+          <div class="entry-title">Mini Reading Gratis</div>
+          <div class="entry-sub">Satu kartu, satu insight singkat</div>
+        </div>
+        <span class="entry-arrow">↗</span>
+      </a>
+      <a class="entry" href="https://fauzantarot.github.io/Numerology/" target="_blank">
+        <div>
+          <div class="entry-title">Analisa Numerology</div>
+          <div class="entry-sub">Baca pola dari tanggal lahirmu</div>
+        </div>
+        <span class="entry-arrow">↗</span>
+      </a>
+    </div>
+  </section>
+
+  <section class="reveal">
+    <div class="section-head">
+      <div class="eyebrow">Sebelum Booking</div>
+      <h2>Bukti & proses kerja</h2>
+    </div>
+    <div class="proof-grid">
+      <a class="proof-card" href="https://drive.google.com/drive/folders/1ZNTNJdw2JEy74JxwqfDnRX6ds72Mw0m9" target="_blank">
+        <span class="num">✓</span>
+        <span class="lbl">Testimoni<br>Klien</span>
+      </a>
+      <a class="proof-card" href="https://drive.google.com/drive/folders/1ZTqqTixkERhGKZuvZU0XT37AMTtY0Dka" target="_blank">
+        <span class="num">↻</span>
+        <span class="lbl">Perjalanan<br>Belajar</span>
+      </a>
+    </div>
+  </section>
+
+  <section class="info-section reveal">
+    <div class="schedule">
+      Waktu Layanan
+      <span>12:00 – 23:30 WITA · Libur Selasa</span>
+    </div>
+
+    <div class="socials">
+      <a href="https://www.tiktok.com/@fauzantarot" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/3046/3046121.png" alt="TikTok"></a>
+      <a href="https://www.instagram.com/fauzantarot" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/174/174855.png" alt="Instagram"></a>
+      <a href="https://www.facebook.com/fauzantarot" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" alt="Facebook"></a>
+      <a href="https://www.youtube.com/@fauzantarot" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png" alt="YouTube"></a>
+    </div>
+
+    <footer>© 2026 Fauzan</footer>
+  </section>
+
+</main>
+
+<script>
+/* ---------- STATUS: buka/tutup berdasar jam WITA ---------- */
+(function(){
+  const pill = document.getElementById('statusPill');
+  const text = document.getElementById('statusText');
+  function update(){
+    const now = new Date(new Date().toLocaleString('en-US',{timeZone:'Asia/Makassar'}));
+    const day = now.getDay(); // 0=Minggu ... 2=Selasa
+    const hour = now.getHours() + now.getMinutes()/60;
+    const isTuesday = day === 2;
+    const withinHours = hour >= 12 && hour < 23.5;
+    const open = withinHours && !isTuesday;
+    pill.classList.toggle('open', open);
+    if(isTuesday){
+      text.textContent = 'Libur hari ini, kembali besok 12:00 WITA';
+    } else if(open){
+      text.textContent = 'Buka sekarang · balasan lebih cepat';
+    } else {
+      text.textContent = 'Sedang tutup · buka jam 12:00 WITA';
+    }
+  }
+  update();
+  setInterval(update, 60000);
+})();
+
+/* ---------- SCROLL REVEAL ---------- */
+(function(){
+  const els = document.querySelectorAll('.reveal');
+  if(!('IntersectionObserver' in window)){ els.forEach(e=>e.classList.add('in')); return; }
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(entry=>{
+      if(entry.isIntersecting){
+        entry.target.classList.add('in');
+        io.unobserve(entry.target);
+      }
+    });
+  }, {threshold:.12});
+  els.forEach(e=>io.observe(e));
+})();
+
+/* ---------- COSMIC SIGNATURE: drifting constellation ---------- */
+(function(){
+  const canvas = document.getElementById('sky');
+  const ctx = canvas.getContext('2d');
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let w, h, stars = [];
+
+  function resize(){
+    w = canvas.width = window.innerWidth;
+    h = canvas.height = document.body.scrollHeight;
+  }
+
+  function init(){
+    resize();
+    const count = Math.floor((w*h)/28000);
+    stars = Array.from({length: count}, ()=>({
+      x: Math.random()*w,
+      y: Math.random()*h,
+      r: Math.random()*1.3 + 0.3,
+      vx: (Math.random()-0.5)*0.05,
+      vy: (Math.random()-0.5)*0.05,
+      tw: Math.random()*Math.PI*2
+    }));
+  }
+
+  function frame(){
+    ctx.clearRect(0,0,w,h);
+    // links
+    ctx.strokeStyle = 'rgba(124,111,160,0.12)';
+    ctx.lineWidth = 0.6;
+    for(let i=0;i<stars.length;i++){
+      for(let j=i+1;j<stars.length;j++){
+        const dx = stars[i].x-stars[j].x, dy = stars[i].y-stars[j].y;
+        const d = Math.sqrt(dx*dx+dy*dy);
+        if(d < 90){
+          ctx.beginPath();
+          ctx.moveTo(stars[i].x, stars[i].y);
+          ctx.lineTo(stars[j].x, stars[j].y);
+          ctx.stroke();
+        }
+      }
+    }
+    // stars
+    stars.forEach(s=>{
+      s.tw += 0.02;
+      const alpha = 0.4 + Math.sin(s.tw)*0.3;
+      ctx.beginPath();
+      ctx.fillStyle = `rgba(201,168,106,${Math.max(0,alpha)})`;
+      ctx.arc(s.x, s.y, s.r, 0, Math.PI*2);
+      ctx.fill();
+      if(!reduceMotion){
+        s.x += s.vx; s.y += s.vy;
+        if(s.x<0) s.x=w; if(s.x>w) s.x=0;
+        if(s.y<0) s.y=h; if(s.y>h) s.y=0;
+      }
+    });
+    if(!reduceMotion) requestAnimationFrame(frame);
+  }
+
+  init();
+  frame();
+  window.addEventListener('resize', ()=>{ init(); if(reduceMotion) frame(); });
+})();
+</script>
 
 </body>
 </html>
