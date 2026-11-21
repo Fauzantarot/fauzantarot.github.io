@@ -4,301 +4,168 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Fauzan | Teman Perubahan</title>
-<meta name="description" content="Pemetaan masalah cinta & hubungan lewat intuisi tarot dan logika. Booking sesi, mini reading gratis, dan analisa numerology.">
-<link rel="icon" href="https://drive.google.com/thumbnail?id=1TLZJ2tYFNbmdDoJIQXaMG4TVYBQLi7mQ&sz=w1000">
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;1,9..144,400&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<meta name="description" content="Pemetaan masalah &amp; lewat intuisi tarot dan logika. Booking sesi serta analisa Human Design &amp; Numerology gratis.">
+<meta name="theme-color" content="#030304">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="id_ID">
+<meta property="og:title" content="Fauzan | Teman Perubahan">
+<meta property="og:description" content="Pemetaan masalah  &amp; lewat intuisi tarot dan logika. Booking sesi serta analisa Human Design &amp; Numerology gratis.">
+<meta property="og:image" content="https://drive.google.com/thumbnail?id=1TLZJ2tYFNbmdDoJIQXaMG4TVYBQLi7mQ&amp;sz=w1200">
+<meta name="twitter:card" content="summary">
+<link rel="icon" href="https://drive.google.com/thumbnail?id=1TLZJ2tYFNbmdDoJIQXaMG4TVYBQLi7mQ&amp;sz=w128">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;1,9..144,400&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script>document.documentElement.classList.add('js')</script>
 
 <style>
   :root{
-    --bg:#030304;
-    --bg-soft:#0a0a0e;
-    --card:#0d0d11;
-    --ink:#f2efe9;
-    --muted:#8b8790;
-    --gold:#c9a86a;
-    --gold-dim:#8f7a4f;
-    --violet:#7c6fa0;
-    --line:#1c1c22;
-    --open:#7fae7a;
-    --closed:#a67a6a;
+    --bg:#030304;--bg-soft:#0a0a0e;--card:#0d0d11;
+    --ink:#f2efe9;--muted:#8b8790;
+    --gold:#c9a86a;--gold-dim:#8f7a4f;--violet:#7c6fa0;
+    --line:#1c1c22;--open:#7fae7a;--closed:#a67a6a;
   }
-
   *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent;}
-
   html{scroll-behavior:smooth;}
-
   body{
-    background:var(--bg);
-    color:var(--ink);
-    font-family:'Manrope',sans-serif;
-    font-weight:300;
-    line-height:1.65;
-    -webkit-font-smoothing:antialiased;
-    overflow-x:hidden;
+    background:var(--bg);color:var(--ink);
+    font-family:'Manrope',sans-serif;font-weight:400;line-height:1.65;
+    -webkit-font-smoothing:antialiased;overflow-x:hidden;
   }
+  a:focus-visible,summary:focus-visible{outline:2px solid var(--gold);outline-offset:3px;border-radius:4px;}
 
-  /* ---------- COSMIC BACKGROUND SIGNATURE ---------- */
-  #sky{
-    position:fixed;
-    inset:0;
-    z-index:0;
-    opacity:.55;
-    pointer-events:none;
-  }
-
+  /* latar kosmik: kanvas selalu seukuran viewport */
+  #sky{position:fixed;inset:0;width:100%;height:100%;z-index:0;opacity:.55;pointer-events:none;}
   .bg-gradient{
-    position:fixed;
-    inset:0;
-    z-index:0;
+    position:fixed;inset:0;z-index:0;pointer-events:none;
     background:
       radial-gradient(ellipse 60% 40% at 50% -10%, rgba(124,111,160,.16), transparent 60%),
       radial-gradient(ellipse 50% 30% at 85% 90%, rgba(201,168,106,.08), transparent 60%);
-    pointer-events:none;
   }
-
   main{
-    position:relative;
-    z-index:1;
-    width:100%;
-    max-width:520px;
-    margin:0 auto;
-    padding:64px 24px 40px;
-    display:flex;
-    flex-direction:column;
-    align-items:center;
+    position:relative;z-index:1;width:100%;max-width:520px;margin:0 auto;
+    padding:64px 24px 40px;display:flex;flex-direction:column;align-items:center;
   }
 
-  /* ---------- REVEAL ---------- */
-  .reveal{
-    opacity:0;
-    transform:translateY(14px);
-    transition:opacity .7s ease, transform .7s ease;
-  }
-  .reveal.in{opacity:1;transform:translateY(0);}
+  /* reveal: hanya aktif bila JS jalan, jadi konten tak pernah hilang */
+  .js .reveal{opacity:0;transform:translateY(14px);transition:opacity .7s ease, transform .7s ease;}
+  .js .reveal.in{opacity:1;transform:translateY(0);}
 
-  /* ---------- HERO ---------- */
-  .profile-wrap{
-    position:relative;
-    width:112px;height:112px;
-    margin-bottom:22px;
-  }
-  .profile-ring{
-    position:absolute;inset:-6px;
-    border-radius:50%;
-    border:1px solid var(--gold-dim);
-    opacity:.6;
-  }
-  .profile-img{
-    width:100%;height:100%;
-    border-radius:50%;
-    object-fit:cover;
-    filter:grayscale(100%);
-  }
+  .profile-wrap{position:relative;width:112px;height:112px;margin-bottom:22px;}
+  .profile-ring{position:absolute;inset:-6px;border-radius:50%;border:1px solid var(--gold-dim);opacity:.6;}
+  .profile-img{width:100%;height:100%;border-radius:50%;object-fit:cover;filter:grayscale(100%);}
 
-  .eyebrow{
-    font-size:.7rem;
-    letter-spacing:3px;
-    text-transform:uppercase;
-    color:var(--gold);
-    margin-bottom:10px;
-    font-weight:500;
-  }
+  .eyebrow{font-size:.75rem;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:10px;font-weight:500;}
+  h1{font-family:'Fraunces',serif;font-weight:500;font-size:1.8rem;letter-spacing:.3px;margin-bottom:6px;}
+  .bio{font-size:.95rem;font-weight:400;color:var(--muted);max-width:360px;margin:14px 0 26px;}
 
-  h1{
-    font-family:'Fraunces',serif;
-    font-weight:500;
-    font-size:1.8rem;
-    letter-spacing:.3px;
-    margin-bottom:6px;
-  }
-
-  h1 em{font-style:italic;font-weight:400;color:var(--gold);}
-
-  .bio{
-    font-size:.95rem;
-    font-weight:300;
-    color:var(--muted);
-    max-width:360px;
-    margin:14px 0 26px;
-  }
-  .bio strong{color:var(--ink);font-weight:500;}
-
-  /* status pill */
   .status{
-    display:inline-flex;
-    align-items:center;
-    gap:8px;
-    padding:8px 16px;
-    border:1px solid var(--line);
-    border-radius:100px;
-    font-size:.75rem;
-    color:var(--muted);
-    margin-bottom:30px;
-    background:rgba(255,255,255,.02);
+    display:inline-flex;align-items:center;gap:8px;padding:8px 16px;
+    border:1px solid var(--line);border-radius:100px;font-size:.8rem;color:var(--muted);
+    margin-bottom:30px;background:rgba(255,255,255,.02);
   }
-  .status .dot{
-    width:7px;height:7px;border-radius:50%;
-    background:var(--closed);
-    box-shadow:0 0 8px var(--closed);
-  }
+  .status .dot{width:7px;height:7px;border-radius:50%;background:var(--closed);box-shadow:0 0 8px var(--closed);}
   .status.open .dot{background:var(--open);box-shadow:0 0 8px var(--open);}
 
-  /* ---------- CTA BUTTONS ---------- */
   .cta-group{width:100%;display:flex;flex-direction:column;gap:12px;margin-bottom:56px;}
-
   .btn{
-    width:100%;
-    padding:17px 20px;
-    background:transparent;
-    border:1px solid var(--line);
-    color:var(--ink);
-    text-decoration:none;
-    font-size:.88rem;
-    font-weight:400;
-    letter-spacing:.3px;
-    border-radius:6px;
-    transition:all .25s ease;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    gap:8px;
+    width:100%;padding:17px 20px;background:transparent;border:1px solid var(--line);color:var(--ink);
+    text-decoration:none;font-size:.88rem;font-weight:400;letter-spacing:.3px;border-radius:6px;
+    transition:all .25s ease;display:flex;justify-content:center;align-items:center;gap:8px;
   }
-  .btn-primary{
-    background:var(--ink);
-    color:var(--bg);
-    font-weight:600;
-    border:none;
-  }
+  .btn-primary{background:var(--ink);color:var(--bg);font-weight:600;border:none;}
   .btn:hover{border-color:var(--muted);transform:translateY(-1px);}
   .btn-primary:hover{background:var(--gold);color:var(--bg);}
 
-  /* ---------- SECTIONS ---------- */
   section{width:100%;margin-bottom:56px;}
-
   .section-head{margin-bottom:22px;text-align:left;}
   .section-head .eyebrow{margin-bottom:6px;}
-  .section-head h2{
-    font-family:'Fraunces',serif;
-    font-weight:500;
-    font-size:1.3rem;
-  }
-  .section-head p{
-    font-size:.85rem;
-    color:var(--muted);
-    margin-top:6px;
-  }
+  .section-head h2{font-family:'Fraunces',serif;font-weight:500;font-size:1.3rem;}
+  .section-head p{font-size:.85rem;color:var(--muted);margin-top:6px;}
 
-  /* tier cards */
   .tier{
-    text-align:left;
-    border:1px solid var(--line);
-    border-radius:10px;
-    padding:22px;
-    margin-bottom:14px;
-    background:linear-gradient(180deg, rgba(255,255,255,.015), transparent);
-    transition:border-color .25s ease;
+    text-align:left;border:1px solid var(--line);border-radius:10px;padding:22px;margin-bottom:14px;
+    background:linear-gradient(180deg, rgba(255,255,255,.015), transparent);transition:border-color .25s ease;
   }
   .tier:hover{border-color:var(--gold-dim);}
   .tier-top{display:flex;justify-content:space-between;align-items:baseline;gap:10px;margin-bottom:8px;}
   .tier-name{font-family:'Fraunces',serif;font-size:1.05rem;font-weight:500;}
-  .tier-for{font-size:.7rem;letter-spacing:1px;text-transform:uppercase;color:var(--gold);white-space:nowrap;}
+  .tier-for{font-size:.75rem;letter-spacing:1px;text-transform:uppercase;color:var(--gold);white-space:nowrap;}
   .tier-desc{font-size:.85rem;color:var(--muted);margin-bottom:14px;}
-  .tier a{
-    font-size:.8rem;
-    color:var(--ink);
-    text-decoration:none;
-    border-bottom:1px solid var(--gold-dim);
-    padding-bottom:2px;
-  }
-  .tier a:hover{border-color:var(--gold);color:var(--gold);}
+  .tier-more summary{list-style:none;display:inline-block;cursor:pointer;font-size:.8rem;color:var(--ink);border-bottom:1px solid var(--gold-dim);padding-bottom:2px;}
+  .tier-more summary::-webkit-details-marker{display:none;}
+  .tier-more summary::after{content:" +";color:var(--gold);}
+  .tier-more[open] summary::after{content:" −";}
+  .tier-more summary:hover{border-color:var(--gold);color:var(--gold);}
+  .tier-more .s-close,.tier-more[open] .s-open{display:none;}
+  .tier-more[open] .s-close{display:inline;}
+  .tier-more img{display:block;width:100%;height:auto;min-height:160px;margin-top:16px;border-radius:8px;border:1px solid var(--line);background:var(--card);animation:tierIn .4s ease;}
+  @keyframes tierIn{from{opacity:0;transform:translateY(-6px);}to{opacity:1;transform:none;}}
 
-  /* entry links grid */
   .entry-grid{display:flex;flex-direction:column;gap:12px;}
   .entry{
-    display:flex;justify-content:space-between;align-items:center;
-    text-align:left;
-    border:1px solid var(--line);
-    border-radius:8px;
-    padding:16px 18px;
-    text-decoration:none;
-    color:var(--ink);
-    transition:all .25s ease;
+    display:flex;justify-content:space-between;align-items:center;text-align:left;
+    border:1px solid var(--line);border-radius:8px;padding:16px 18px;text-decoration:none;color:var(--ink);transition:all .25s ease;
   }
   .entry:hover{border-color:var(--muted);background:rgba(255,255,255,.02);}
   .entry-title{font-size:.88rem;font-weight:500;}
-  .entry-sub{font-size:.75rem;color:var(--muted);margin-top:3px;}
+  .entry-sub{font-size:.8rem;color:var(--muted);margin-top:3px;}
   .entry-arrow{color:var(--gold);font-size:1rem;}
 
-  /* proof */
   .proof-grid{display:flex;gap:12px;}
   .proof-card{
-    flex:1;
-    border:1px solid var(--line);
-    border-radius:8px;
-    padding:20px 14px;
-    text-align:center;
-    text-decoration:none;
-    color:var(--ink);
-    transition:all .25s ease;
+    flex:1;border:1px solid var(--line);border-radius:8px;padding:20px 14px;text-align:center;
+    text-decoration:none;color:var(--ink);transition:all .25s ease;
   }
   .proof-card:hover{border-color:var(--gold-dim);}
   .proof-card .num{font-family:'Fraunces',serif;font-size:1.4rem;color:var(--gold);display:block;margin-bottom:4px;}
-  .proof-card .lbl{font-size:.72rem;color:var(--muted);letter-spacing:.5px;}
+  .proof-card .lbl{font-size:.78rem;color:var(--muted);letter-spacing:.5px;}
 
-  /* ---------- FOOTER ---------- */
-  .info-section{
-    width:100%;
-    border-top:1px solid var(--line);
-    padding-top:32px;
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    gap:22px;
-  }
-
+  .info-section{width:100%;border-top:1px solid var(--line);padding-top:32px;display:flex;flex-direction:column;align-items:center;gap:22px;}
   .schedule{font-family:'Fraunces',serif;font-size:.95rem;color:var(--gold);text-align:center;}
-  .schedule span{display:block;font-family:'Manrope',sans-serif;font-size:.78rem;color:var(--muted);margin-top:4px;font-weight:300;}
+  .schedule span{display:block;font-family:'Manrope',sans-serif;font-size:.82rem;color:var(--muted);margin-top:4px;font-weight:400;}
 
-  .socials{display:flex;gap:26px;}
-  .socials a{display:block;opacity:.55;transition:opacity .25s ease;}
+  .socials{display:flex;gap:10px;}
+  .socials a{display:block;padding:8px;color:var(--ink);opacity:.6;transition:opacity .25s ease;}
   .socials a:hover{opacity:1;}
-  .socials img{width:18px;height:18px;filter:invert(100%);}
+  .socials svg{width:22px;height:22px;display:block;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round;}
 
-  footer{margin-top:26px;font-size:.7rem;color:#444;letter-spacing:1px;}
+  footer{margin-top:26px;font-size:.75rem;color:var(--muted);letter-spacing:1px;}
 
   @media (prefers-reduced-motion: reduce){
     html{scroll-behavior:auto;}
-    .reveal{opacity:1;transform:none;transition:none;}
+    .js .reveal{opacity:1;transform:none;transition:none;}
+    .tier-more img{animation:none;}
   }
 </style>
 </head>
 <body>
 
-<canvas id="sky"></canvas>
+<canvas id="sky" aria-hidden="true"></canvas>
 <div class="bg-gradient"></div>
 
 <main>
 
   <div class="profile-wrap reveal">
     <div class="profile-ring"></div>
-    <img class="profile-img" src="https://drive.google.com/thumbnail?id=1TLZJ2tYFNbmdDoJIQXaMG4TVYBQLi7mQ&sz=w1000" alt="Fauzan Profile">
+    <img class="profile-img" width="112" height="112" src="https://drive.google.com/thumbnail?id=1TLZJ2tYFNbmdDoJIQXaMG4TVYBQLi7mQ&amp;sz=w256" alt="Foto Fauzan">
   </div>
 
   <div class="eyebrow reveal">Tarot Mapping</div>
   <h1 class="reveal">TEMAN PERUBAHAN</h1>
 
   <p class="bio reveal">
-    Membantu memetakan akar masalah melalui bacaan Tarot intuitif dan analisa sadar yang aktif untuk mendapatkan solusi terbaik untuk setiap masalah yang tengah kamu hadapi sekarang
+    Membantu memetakan akar masalah melalui bacaan Tarot intuitif dan analisa sadar yang aktif
   </p>
 
-  <div class="status reveal" id="statusPill">
+  <div class="status reveal" id="statusPill" role="status">
     <span class="dot"></span>
     <span id="statusText">Mengecek jadwal…</span>
   </div>
 
   <div class="cta-group reveal">
-    <a href="https://wa.me/6281234567890" target="_blank" class="btn btn-primary">Chat via WhatsApp</a>
-    <a href="https://fauzantarot.github.io/Pricelist/" target="_blank" class="btn">Lihat Detail & Booking Sesi</a>
+    <a href="https://wa.me/6281234567890?text=Halo%20Kak%20Fauzan%2C%20aku%20mau%20cerita%20sedikit%20soal%E2%80%A6" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Chat via WhatsApp</a>
+    <a href="https://fauzantarot.github.io/Pricelist/" target="_blank" rel="noopener noreferrer" class="btn">Lihat Detail &amp; Booking Sesi</a>
   </div>
 
   <section class="reveal">
@@ -314,53 +181,63 @@
         <span class="tier-for">Non interaktif</span>
       </div>
       <p class="tier-desc">Pemetaan situasi tanpa sesi 2 arah</p>
-      <a href="https://raw.githubusercontent.com/Fauzantarot/fauzantarot.github.io/68adb8158a5af01530e1bbecaf05cdfb7c60cec3/Katalog_Layanan%20(1)_260630_164925_2.jpg" target="_blank">Lihat detail →</a>
+      <details class="tier-more">
+        <summary><span class="s-open">Lihat detail</span><span class="s-close">Tutup detail</span></summary>
+        <img src="https://raw.githubusercontent.com/Fauzantarot/fauzantarot.github.io/68adb8158a5af01530e1bbecaf05cdfb7c60cec3/Katalog_Layanan%20(1)_260630_164925_2.jpg" alt="Rincian paket Simple Mapping" loading="lazy" decoding="async">
+      </details>
     </div>
 
     <div class="tier">
       <div class="tier-top">
         <span class="tier-name">The Spark</span>
-        <span class="tier-for">Sesi Interaktif singkat</span>
+        <span class="tier-for">Sesi interaktif singkat</span>
       </div>
-      <p class="tier-desc">Sesi interaktif untuk mengurai masalah mendesak .</p>
-      <a href="https://raw.githubusercontent.com/Fauzantarot/fauzantarot.github.io/68adb8158a5af01530e1bbecaf05cdfb7c60cec3/Katalog_Layanan%20(1)_260630_164925_3.jpg" target="_blank">Lihat detail →</a>
+      <p class="tier-desc">Sesi interaktif untuk mengurai masalah mendesak.</p>
+      <details class="tier-more">
+        <summary><span class="s-open">Lihat detail</span><span class="s-close">Tutup detail</span></summary>
+        <img src="https://raw.githubusercontent.com/Fauzantarot/fauzantarot.github.io/68adb8158a5af01530e1bbecaf05cdfb7c60cec3/Katalog_Layanan%20(1)_260630_164925_3.jpg" alt="Rincian paket The Spark" loading="lazy" decoding="async">
+      </details>
     </div>
 
     <div class="tier">
       <div class="tier-top">
-        <span class="tier-name">Deep Allignment</span>
+        <span class="tier-name">Deep Alignment</span>
         <span class="tier-for">Pemetaan mendalam</span>
       </div>
       <p class="tier-desc">Bedah 1 pola hidup dan akar masalah secara menyeluruh.</p>
-      <a href="https://raw.githubusercontent.com/Fauzantarot/fauzantarot.github.io/68adb8158a5af01530e1bbecaf05cdfb7c60cec3/Katalog_Layanan%20(1)_260630_164925_4.jpg" target="_blank">Lihat detail →</a>
+      <details class="tier-more">
+        <summary><span class="s-open">Lihat detail</span><span class="s-close">Tutup detail</span></summary>
+        <img src="https://raw.githubusercontent.com/Fauzantarot/fauzantarot.github.io/68adb8158a5af01530e1bbecaf05cdfb7c60cec3/Katalog_Layanan%20(1)_260630_164925_4.jpg" alt="Rincian paket Deep Alignment" loading="lazy" decoding="async">
+      </details>
     </div>
-    
-     <div class="tier">
+
+    <div class="tier">
       <div class="tier-top">
         <span class="tier-name">Metamorphosis</span>
-        <span class="tier-for">Pendampingan Rutin</span>
+        <span class="tier-for">Pendampingan rutin</span>
       </div>
-      <p class="tier-desc">Program transformasi selama 1 bulan penuh. Dirancang khusus untuk 
-kamu yang sudah muak dengan keadaan dan bertekad kuat untuk 
-menghancurkan pola lama.</p>
-      <a href="https://raw.githubusercontent.com/Fauzantarot/fauzantarot.github.io/68adb8158a5af01530e1bbecaf05cdfb7c60cec3/Katalog_Layanan%20(1)_260630_164925_5.jpg" target="_blank">Lihat detail →</a>
+      <p class="tier-desc">Program transformasi selama 1 bulan penuh. Dirancang khusus untuk kamu yang sudah muak dengan keadaan dan bertekad kuat untuk menghancurkan pola lama.</p>
+      <details class="tier-more">
+        <summary><span class="s-open">Lihat detail</span><span class="s-close">Tutup detail</span></summary>
+        <img src="https://raw.githubusercontent.com/Fauzantarot/fauzantarot.github.io/68adb8158a5af01530e1bbecaf05cdfb7c60cec3/Katalog_Layanan%20(1)_260630_164925_5.jpg" alt="Rincian paket Metamorphosis" loading="lazy" decoding="async">
+      </details>
     </div>
   </section>
 
   <section class="reveal">
     <div class="section-head">
-      <div class="eyebrow">Belum Yakin?</div>
+      <div class="eyebrow"></div>
       <h2>Mulai dari sini, gratis</h2>
     </div>
     <div class="entry-grid">
-      <a class="entry" href="https://fauzantarot.github.io/humandesign/" target="_blank">
+      <a class="entry" href="https://fauzantarot.github.io/humandesign/" target="_blank" rel="noopener noreferrer">
         <div>
           <div class="entry-title">Human Design</div>
           <div class="entry-sub">Pembacaan BodyGraph</div>
         </div>
         <span class="entry-arrow">↗</span>
       </a>
-      <a class="entry" href="https://fauzantarot.github.io/Numerology/" target="_blank">
+      <a class="entry" href="https://fauzantarot.github.io/Numerology/" target="_blank" rel="noopener noreferrer">
         <div>
           <div class="entry-title">Analisa Numerology</div>
           <div class="entry-sub">Baca pola dari angka lahirmu</div>
@@ -372,15 +249,15 @@ menghancurkan pola lama.</p>
 
   <section class="reveal">
     <div class="section-head">
-      <div class="eyebrow">Sebelum Booking</div>
-      <h2>Bukti & proses kerja</h2>
+      <div class="eyebrow"></div>
+      <h2>Bukti &amp; proses kerja</h2>
     </div>
     <div class="proof-grid">
-      <a class="proof-card" href="https://drive.google.com/drive/folders/1ZNTNJdw2JEy74JxwqfDnRX6ds72Mw0m9" target="_blank">
+      <a class="proof-card" href="https://drive.google.com/drive/folders/1ZNTNJdw2JEy74JxwqfDnRX6ds72Mw0m9" target="_blank" rel="noopener noreferrer">
         <span class="num">✓</span>
         <span class="lbl">Testimoni<br>Klien</span>
       </a>
-      <a class="proof-card" href="https://drive.google.com/drive/folders/1ZTqqTixkERhGKZuvZU0XT37AMTtY0Dka" target="_blank">
+      <a class="proof-card" href="https://drive.google.com/drive/folders/1ZTqqTixkERhGKZuvZU0XT37AMTtY0Dka" target="_blank" rel="noopener noreferrer">
         <span class="num">↻</span>
         <span class="lbl">Perjalanan<br>Belajar</span>
       </a>
@@ -394,119 +271,106 @@ menghancurkan pola lama.</p>
     </div>
 
     <div class="socials">
-      <a href="https://www.tiktok.com/@fauzantarot" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/3046/3046121.png" alt="TikTok"></a>
-      <a href="https://www.instagram.com/fauzantarot" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/174/174855.png" alt="Instagram"></a>
-      <a href="https://www.facebook.com/fauzantarot" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" alt="Facebook"></a>
-      <a href="https://www.youtube.com/@fauzantarot" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png" alt="YouTube"></a>
+      <a href="https://www.tiktok.com/@fauzantarot" target="_blank" rel="noopener noreferrer" aria-label="TikTok"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 3v11a3.5 3.5 0 1 1-3.5-3.5M14 3c.3 2.4 1.9 4.1 5 4.4"/></svg></a>
+      <a href="https://www.instagram.com/fauzantarot" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".6"/></svg></a>
+      <a href="https://www.facebook.com/fauzantarot" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+      <a href="https://www.youtube.com/@fauzantarot" target="_blank" rel="noopener noreferrer" aria-label="YouTube"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="5.5" width="19" height="13" rx="4"/><path d="M10 9.5l5 2.5-5 2.5z"/></svg></a>
     </div>
 
-    <footer>© 2026 Fauzan</footer>
+    <footer> 2026 Fauzan</footer>
   </section>
 
 </main>
 
 <script>
-/* ---------- STATUS: buka/tutup berdasar jam WITA ---------- */
+/* STATUS: buka/tutup berdasar jam WITA */
 (function(){
   const pill = document.getElementById('statusPill');
   const text = document.getElementById('statusText');
+  const fmt = new Intl.DateTimeFormat('en-US',{timeZone:'Asia/Makassar',weekday:'short',hour:'numeric',minute:'numeric',hourCycle:'h23'});
+  const days = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
   function update(){
-    const now = new Date(new Date().toLocaleString('en-US',{timeZone:'Asia/Makassar'}));
-    const day = now.getDay(); // 0=Minggu ... 2=Selasa
-    const hour = now.getHours() + now.getMinutes()/60;
-    const isTuesday = day === 2;
-    const withinHours = hour >= 12 && hour < 23.5;
-    const open = withinHours && !isTuesday;
+    const p = fmt.formatToParts(new Date());
+    const g = t => p.find(x => x.type === t).value;
+    const day = days.indexOf(g('weekday'));
+    const hour = +g('hour') + +g('minute')/60;
+    const off = day === 2;                       // Selasa libur
+    const open = !off && hour >= 12 && hour < 23.5;
     pill.classList.toggle('open', open);
-    if(isTuesday){
-      text.textContent = 'Libur hari ini, kembali besok 12:00 WITA';
-    } else if(open){
-      text.textContent = 'Buka sekarang · balasan lebih cepat';
-    } else {
-      text.textContent = 'Sedang tutup · buka jam 12:00 WITA';
-    }
+    text.textContent =
+      off          ? 'Libur hari ini, kembali besok 12:00 WITA' :
+      open         ? 'Buka sekarang · balasan lebih cepat' :
+      hour < 12    ? 'Sedang tutup · buka hari ini jam 12:00 WITA' :
+      day === 1    ? 'Sedang tutup · buka lagi Rabu jam 12:00 WITA' :
+                     'Sedang tutup · buka besok jam 12:00 WITA';
   }
   update();
   setInterval(update, 60000);
 })();
 
-/* ---------- SCROLL REVEAL ---------- */
+/* SCROLL REVEAL */
 (function(){
   const els = document.querySelectorAll('.reveal');
   if(!('IntersectionObserver' in window)){ els.forEach(e=>e.classList.add('in')); return; }
-  const io = new IntersectionObserver((entries)=>{
-    entries.forEach(entry=>{
-      if(entry.isIntersecting){
-        entry.target.classList.add('in');
-        io.unobserve(entry.target);
-      }
-    });
+  const io = new IntersectionObserver(entries=>{
+    entries.forEach(en=>{ if(en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target); } });
   }, {threshold:.12});
   els.forEach(e=>io.observe(e));
 })();
 
-/* ---------- COSMIC SIGNATURE: drifting constellation ---------- */
+/* LATAR KOSMIK: konstelasi melayang, seukuran viewport */
 (function(){
   const canvas = document.getElementById('sky');
   const ctx = canvas.getContext('2d');
-  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  let w, h, stars = [];
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let w = 0, h = 0, stars = [], lastW = innerWidth;
 
-  function resize(){
-    w = canvas.width = window.innerWidth;
-    h = canvas.height = document.body.scrollHeight;
+  function size(){
+    const d = Math.min(devicePixelRatio || 1, 2);
+    w = innerWidth; h = innerHeight;
+    canvas.width = w*d; canvas.height = h*d;
+    ctx.setTransform(d,0,0,d,0,0);
   }
-
-  function init(){
-    resize();
-    const count = Math.floor((w*h)/28000);
-    stars = Array.from({length: count}, ()=>({
-      x: Math.random()*w,
-      y: Math.random()*h,
-      r: Math.random()*1.3 + 0.3,
-      vx: (Math.random()-0.5)*0.05,
-      vy: (Math.random()-0.5)*0.05,
-      tw: Math.random()*Math.PI*2
+  function seed(){
+    const n = Math.min(80, Math.floor(w*h/18000));
+    stars = Array.from({length:n}, ()=>({
+      x:Math.random()*w, y:Math.random()*h, r:Math.random()*1.3+.3,
+      vx:(Math.random()-.5)*.05, vy:(Math.random()-.5)*.05, tw:Math.random()*6.28
     }));
   }
-
-  function frame(){
+  function draw(){
     ctx.clearRect(0,0,w,h);
-    // links
-    ctx.strokeStyle = 'rgba(124,111,160,0.12)';
-    ctx.lineWidth = 0.6;
+    ctx.strokeStyle = 'rgba(124,111,160,.12)';
+    ctx.lineWidth = .6;
+    ctx.beginPath();
     for(let i=0;i<stars.length;i++){
       for(let j=i+1;j<stars.length;j++){
         const dx = stars[i].x-stars[j].x, dy = stars[i].y-stars[j].y;
-        const d = Math.sqrt(dx*dx+dy*dy);
-        if(d < 90){
-          ctx.beginPath();
-          ctx.moveTo(stars[i].x, stars[i].y);
-          ctx.lineTo(stars[j].x, stars[j].y);
-          ctx.stroke();
-        }
+        if(dx*dx+dy*dy < 8100){ ctx.moveTo(stars[i].x,stars[i].y); ctx.lineTo(stars[j].x,stars[j].y); }
       }
     }
-    // stars
-    stars.forEach(s=>{
-      s.tw += 0.02;
-      const alpha = 0.4 + Math.sin(s.tw)*0.3;
-      ctx.beginPath();
-      ctx.fillStyle = `rgba(201,168,106,${Math.max(0,alpha)})`;
-      ctx.arc(s.x, s.y, s.r, 0, Math.PI*2);
-      ctx.fill();
-      if(!reduceMotion){
+    ctx.stroke();
+    for(const s of stars){
+      s.tw += .02;
+      ctx.fillStyle = `rgba(201,168,106,${Math.max(0,.4+Math.sin(s.tw)*.3)})`;
+      ctx.beginPath(); ctx.arc(s.x,s.y,s.r,0,6.283); ctx.fill();
+      if(!reduce){
         s.x += s.vx; s.y += s.vy;
-        if(s.x<0) s.x=w; if(s.x>w) s.x=0;
-        if(s.y<0) s.y=h; if(s.y>h) s.y=0;
+        if(s.x<0) s.x=w; else if(s.x>w) s.x=0;
+        if(s.y<0) s.y=h; else if(s.y>h) s.y=0;
       }
-    });
-    if(!reduceMotion) requestAnimationFrame(frame);
+    }
+    if(!reduce) requestAnimationFrame(draw);
   }
 
-  init();
-  frame();
-  window.addEventListener('resize', ()=>{ init(); if(reduceMotion) frame(); });
+  size(); seed(); draw();
+  addEventListener('resize', ()=>{
+    const widthChanged = innerWidth !== lastW;   // abaikan resize akibat address bar HP
+    lastW = innerWidth;
+    size();
+    if(widthChanged) seed();
+    if(reduce) draw();
+  });
 })();
 </script>
 
